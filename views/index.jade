@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= title 
+  p 
+    b Current orthodoxy:
+  h2= ortho[0].label
+  p The current orthodoxy has lasted:
+  p#since 
+
+block scripts
+  script(src='/javascripts/DaysHMSCounter.js')
+
+  script.
+    var since = #{ortho[0].since};
+    window.onload=function(){ new DaysHMSCounter(since, 'since'); }
